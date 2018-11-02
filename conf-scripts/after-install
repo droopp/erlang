@@ -1,0 +1,6 @@
+#!/bin/sh
+# Don't change this file
+# Its generate automatically
+
+useradd drop-core
+chown -R drop-core:drop-core /opt/erlang
