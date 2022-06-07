@@ -6,11 +6,17 @@ set -e
 
 # Install deps
 
-is_u="$(awk -F= '/^NAME/{print $2}' /etc/os-release | grep Ubuntu | wc -l)"
-if [[ "$is_u" -eq "1" ]]; then
+distrib="$(awk -F= '/^NAME/{print $2}' /etc/os-release)"
+echo $distrib                                                                        
+
+if [[ "$distrib" == *"Ubuntu"* ]]; then
     apt-get install -y libncurses5-dev libncursesw5-dev
-else
+
+elif [[ "$distrib" == *"CentOS"* ]]; then
     yum install -y ncurses-devel
+else
+    echo "undefine OS"                                                          
+    exit 1
 fi
 
 # Build from source
