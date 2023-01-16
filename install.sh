@@ -10,9 +10,11 @@ distrib="$(awk -F= '/^NAME/{print $2}' /etc/os-release)"
 echo $distrib                                                                        
 
 if [[ "$distrib" == *"Ubuntu"* ]]; then
+    apt-get install -y autoconf
     apt-get install -y libncurses5-dev libncursesw5-dev
 
 elif [[ "$distrib" == *"CentOS"* ]]; then
+    yum install -y autoconf
     yum install -y ncurses-devel
 else
     echo "undefine OS"                                                          
